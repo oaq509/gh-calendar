@@ -38,7 +38,7 @@
             <option value="11">11 ذو القعدة</option>
             <option value="12">12 ذو الحجة</option>
         </select>
-        <input autofocus type="text" maxlength="2" id="day" placeholder="اليوم" value="">
+        <input autofocus type="text" maxlength="2" id="day" placeholder="اليوم" value="" autofocus>
         <bdi>:</bdi> هجري
         <br>
         <br>
@@ -51,13 +51,12 @@
     </div>
     <p style="text-align: center; margin-top: 50px; color: gray;">Developed by oyis 🖤.</p>
     <script>
-
         var year = document.getElementById("year");
         var month = null;
         var day = null;
 
         // Execute a function when the user releases a key on the keyboard
-        year.addEventListener("keyup", function (event) {
+        year.addEventListener("keyup", function(event) {
             // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
@@ -97,7 +96,7 @@
                 document.querySelector("#yearRes").value = "";
                 return;
             }
-            
+
             if (year < 1356) {
                 alert("الرجاء إدخال سنة أكبر من 1356 هجري");
                 document.querySelector("#dayRes").value = "";
