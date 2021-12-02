@@ -1,0 +1,88 @@
+
+body {
+    margin-top: 90px;
+    font-family: "Tajawal";
+    background-color: #ddd;
+    zoom: 1.5;
+    -moz-transform: scale(1.5);
+    -moz-transform-origin: 0 0
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        zoom: 0;
+        -moz-transform: scale(0);
+        -moz-transform-origin: 0 0
+    }
+    
+    .container input{
+        height: auto;
+    }
+}
+
+h1,
+h2 {
+    text-align: center
+}
+
+h2 {
+    color: rgb(128, 74, 151)
+}
+
+.container {
+    text-align: right;
+    background-color: #eee;
+    padding: 20px;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    width: 320px;
+    margin: 50px auto 0px auto
+}
+
+.container input {
+    -webkit-appearance: none;
+    border: 1px solid gray;
+    text-align: center;
+    width: 50px;
+    height: 18px;
+}
+
+.container input::placeholder {
+    text-align: center
+}
+
+.container select {
+    text-align: center;
+    width: 65px;
+    height: 22px
+}
+
+.container button {
+    outline: none;
+    border: none;
+    padding: 8px;
+    margin-right: 5px;
+    font-family: "Tajawal";
+    border-radius: 10px;
+    background-color: rgb(24, 180, 94)
+}
+
+.container button:hover {
+    background-color: rgb(40, 158, 65)
+}
+
+#yearRes,
+#monthRes,
+#dayRes {
+    -webkit-appearance: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 3px;
+    border-radius: 7px;
+
+    background-color: rgb(212 212 212);
+    width: 70px;
+    outline: none;
+    border: none
+}

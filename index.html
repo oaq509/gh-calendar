@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?version=17">
+    <script src="moment/moment.js"></script>
+    <script src="moment-hijri/moment-hijri.js"></script>
+    <title>تحويل التاريخ</title>
+</head>
+
+<body>
+
+    <h1>تحويل التاريخ <br></h1>
+    <h2>هجري إلى ميلادي</h2>
+
+    <div class="container">
+
+        <button onclick="calc()" id="submit">تحويل</button>
+        <input type="text" maxlength="4" id="year" placeholder="السنة" value="">
+        <select id="month">
+            <option value="0">الشهر</option>
+            <option value="1">1 محرم</option>
+            <option value="2">2 صفر</option>
+            <option value="3">3 ربيع الأول</option>
+            <option value="4">4 ربيع الثاني</option>
+            <option value="5">5 جمادي الأول</option>
+            <option value="6">6 جمادي الثاني</option>
+            <option value="7">7 رجب</option>
+            <option value="8">8 شعبان</option>
+            <option value="9">9 رمضان</option>
+            <option value="10">10 شوال</option>
+            <option value="11">11 ذو القعدة</option>
+            <option value="12">12 ذو الحجة</option>
+        </select>
+        <input autofocus type="text" maxlength="2" id="day" placeholder="اليوم" value="">
+        <bdi>:</bdi> هجري
+        <br>
+        <br>
+
+        <input type="text" maxlength="4" disabled id="yearRes" value="">
+        <input type="text" maxlength="4" disabled id="monthRes" value="">
+
+        <input autofocus type="text" disabled maxlength="2" id="dayRes" value="">
+        <bdi>=</bdi> ميلادي
+    </div>
+    <p style="text-align: center; margin-top: 50px; color: gray;">Developed by oyis 🖤.</p>
+    <script>
+
+        var year = document.getElementById("year");
+        var month = null;
+        var day = null;
+
+        // Execute a function when the user releases a key on the keyboard
+        year.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("submit").click();
+            }
+        });
+
+
+        function calc() {
+
+            day = Number(document.querySelector("#day").value);
+            month = Number(document.querySelector("#month").value);
+            year = Number(document.querySelector("#year").value);
+
+            if (day < 1 || day > 30) {
+                alert("الرجاء إدخال يوم صحيح");
+                document.querySelector("#dayRes").value = "";
+                document.querySelector("#monthRes").value = "";
+                document.querySelector("#yearRes").value = "";
+                return;
+            }
+
+            if (month < 1 || month > 12) {
+                alert("الرجاء إدخال شهر صحيح");
+                document.querySelector("#dayRes").value = "";
+                document.querySelector("#monthRes").value = "";
+                document.querySelector("#yearRes").value = "";
+                return;
+            }
+
+            if (year < 1000 || year > 1500) {
+                alert("الرجاء إدخال سنة صحيحة");
+                document.querySelector("#dayRes").value = "";
+                document.querySelector("#monthRes").value = "";
+                document.querySelector("#yearRes").value = "";
+                return;
+            }
+            
+            if (year < 1356) {
+                alert("الرجاء إدخال سنة أكبر من 1356 هجري");
+                document.querySelector("#dayRes").value = "";
+                document.querySelector("#monthRes").value = "";
+                document.querySelector("#yearRes").value = "";
+                return;
+            }
+
+            //--------------------------------------------
+            let dayRes = document.querySelector("#dayRes");
+            let monthRes = document.querySelector("#monthRes");
+            let yearRes = document.querySelector("#yearRes");
+
+            m = moment(String(year) + '/' + String(month) + '/' + String(day), 'iYYYY/iM/iD');
+            dateFormat = String(m.format('YYYY-M-D'));
+            let myDate = dateFormat.split("-");
+
+            dayRes.value = String(myDate[2]);
+            monthRes.value = String(myDate[1]);
+            yearRes.value = String(myDate[0]);
+
+
+        }
+    </script>
+</body>
+
+</html>
